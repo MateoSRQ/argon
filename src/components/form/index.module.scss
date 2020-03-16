@@ -1,0 +1,21 @@
+.component {
+    width: 100%;
+    height: 100%;
+}
+
+.component :global(.ant-form-item-label) > label {
+    margin: 0;
+    line-height: 1.5715;
+    white-space: initial;
+    text-align: left;
+    padding: 0px !important;
+    /* margin-bottom: -6px; */
+    /* margin-left: 7px; */
+    /* font-family: 'Noto Sans', sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
+    /* font-family: 'IBM Plex Sans', sans-serif; */
+    /* text-shadow: 0.01px 0 0 currentColor; */
+    font-size: 0.82rem !important;
+}
+
