@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './index.module.scss'
 import ulog from 'ulog'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Redux from "redux";
-import {setUserModalState} from "../../../redux/actions";
-import {ReduxState} from "../../../redux/reducers";
+import { setUserModalState, saveUser } from "../../../redux/actions";
+import { ReduxState } from "../../../redux/reducers";
 
 import { Modal, Button } from 'antd';
-import {Form, Input, Password} from '../../../components/form';
+import { Form, Input, Password } from '../../../components/form';
 import { DownOutlined } from '@ant-design/icons';
 import Loader from "../../../components/loader";
 
@@ -17,6 +17,7 @@ let log = ulog('users/modal')
 interface Props {
     visible: boolean
     setState: any
+    save: any
 };
 
 interface State {
@@ -34,6 +35,7 @@ class Component extends React.Component<Props, State> {
         log.log('Users:modal:handleOk reached');
         const r = await this.handleSubmit();
         console.log(r);
+        this.props.save(r);
     }
 
     render() {
@@ -48,6 +50,11 @@ class Component extends React.Component<Props, State> {
             >
                 <div className={[style.formContainer].join(' ')}>
                     <Form setSubmit={(e:any) => { this.handleSubmit = e}} >
+                        <Input
+                            label="Nombre"
+                            name="nombre"
+                            rules={[{required: true, message: 'Ingrese su nombre'}]}
+                        />
                         <Input
                             label="Usuario"
                             name="username"
@@ -74,7 +81,8 @@ const mapStateToProps = (state: ReduxState) => {
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<any>) => {
     return {
-        setState: (data: any) => dispatch(setUserModalState(data))
+        setState: (data: any) => dispatch(setUserModalState(data)),
+        save: (data: any) => dispatch(saveUser(data))
         // selectMenuItem: (data: any) => dispatch(selectMenuItem(data)),
     };
 }

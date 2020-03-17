@@ -8,17 +8,17 @@ interface ReduxState {
     selectedItem: string
     modalUsersState: boolean
     listStatus: string
+    listUsers: Object[]
 }
-
 const initialState: ReduxState = {
-    //listSedes: [],
     appCurrentComponent: 'users',
     appStatus: 'loaded',
     listSedes: [],
     loginStatus: null,
     selectedItem: '1',
     modalUsersState: false,
-    listStatus: 'loading'
+    listStatus: 'loading',
+    listUsers: []
 };
 //
 function rootReducer(state = initialState, action: any) {
@@ -39,6 +39,7 @@ function rootReducer(state = initialState, action: any) {
             appStatus: 'fail'
         });
     }
+
     if (action.type === Types.VALIDATE_PASSWORD) {
         return Object.assign({}, state, {
             loginStatus: null
@@ -55,6 +56,7 @@ function rootReducer(state = initialState, action: any) {
             loginStatus: 'fail'
         });
     }
+
     if (action.type === Types.SELECT_MENU_ITEM) {
         return Object.assign({}, state, {
             selectedItem: action.payload
@@ -75,9 +77,10 @@ function rootReducer(state = initialState, action: any) {
             modalUsersState: action.payload
         });
     }
+
     if (action.type === Types.FETCH_USERS_SUCCESS) {
         return Object.assign({}, state, {
-            //listSedes: action.payload.data,
+            listUsers: action.payload.data,
             listStatus: 'loaded'
         });
     }
@@ -87,6 +90,14 @@ function rootReducer(state = initialState, action: any) {
             listStatus: 'fail'
         });
     }
+
+    if (action.type === Types.SAVE_USER_SUCCESS) {
+        return Object.assign({}, state, {
+            // listUsers: action.payload.data,
+            // listStatus: 'loaded'
+        });
+    }
+
     return state;
 };
 

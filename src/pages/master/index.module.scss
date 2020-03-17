@@ -43,7 +43,7 @@
     border-radius: 4px;
 }
 
-.container > .container {
+.id > .container, .id > .menuContainer, .container > .container {
     width: calc(100% - 20px);
     height: calc(100% - 20px);
     left: 10px;
@@ -70,6 +70,7 @@
     top: 0;
     background-color: transparent;
 }
+
 
 .fadeIn {
     -webkit-animation: fadeIn 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;

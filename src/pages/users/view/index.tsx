@@ -11,8 +11,6 @@ import { selectUserActionItem } from "../../../redux/actions";
 import { Button, Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
-
-
 let log = ulog('users/view')
 
 interface Props {
@@ -33,6 +31,7 @@ class Component extends React.Component<Props, State> {
         let menu = (
             <Menu
                 onClick={this.props.selectUserActionItem}
+                className={[style.actionMenu].join(' ')}
             >
                 <Menu.Item key="1">Nuevo usuario</Menu.Item>
                 <Menu.Item key="2">2nd item</Menu.Item>
@@ -42,15 +41,19 @@ class Component extends React.Component<Props, State> {
 
         return (
             <div className={[style.component].join(' ')}>
-                <div className={[style.actionContainer].join(' ')}>
-                    <Dropdown
-                        overlay={menu}
-                    >
-                        <Button>
-                            Acciones <DownOutlined />
-                        </Button>
-                    </Dropdown>
+
+                <div className={[style.recordContainer].join(' ')}>
+                    <div className={[style.actionContainer].join(' ')}>
+                        <Dropdown
+                            overlay={menu}
+                        >
+                            <Button>
+                                Acciones <DownOutlined />
+                            </Button>
+                        </Dropdown>
+                    </div>
                 </div>
+
                 <Modal />
             </div>
         )

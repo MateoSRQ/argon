@@ -7,9 +7,9 @@ import ulog from 'ulog';
 import Loader from '../../components/loader';
 
 import { connect } from "react-redux";
-
-import {  ReduxState } from '../../redux/reducers';
-import {fetchSedes} from "../../redux/actions";
+import { ReduxState } from '../../redux/reducers';
+//import { fetchSedes } from "../../redux/actions";
+import { selectMenuItem } from "../../redux/actions";
 
 import Login from '../login';
 import Master from '../master';
@@ -24,7 +24,8 @@ interface Props {
     status: string
     current: string
     // dispatch
-    fetchSedes: any
+    //fetchSedes: any
+    selectItem: any
 };
 
 interface State {
@@ -38,7 +39,8 @@ class Component extends React.Component<Props, State> {
 
     componentDidMount(): void {
         log.log('App:componentDidMount reached');
-        this.props.fetchSedes();
+        //this.props.fetchSedes();
+        this.props.selectItem({key: '1'});
     }
 
     render() {
@@ -79,7 +81,8 @@ const mapStateToProps = (state: ReduxState) => {
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<any>) => {
     return {
-        fetchSedes: (sedes: any) => dispatch(fetchSedes(sedes)),
+        //fetchSedes: (sedes: any) => dispatch(fetchSedes(sedes)),
+        selectItem: (payload: any) => dispatch(selectMenuItem(payload))
     };
 }
 

@@ -12,8 +12,8 @@ import UserList from '../users/list';
 import UserView from '../users/view';
 
 import Redux from "redux";
-import {validatePassword, selectMenuItem} from "../../redux/actions";
-import {ReduxState} from "../../redux/reducers";
+import { validatePassword, selectMenuItem } from "../../redux/actions";
+import { ReduxState } from "../../redux/reducers";
 
 let log = ulog('master')
 
@@ -31,21 +31,20 @@ class Component extends React.Component<Props, State> {
         log.log('Master:constructor reached');
         super(props);
     }
-
     render() {
         log.log('Master:render reached');
         let items = [
             {
                 type: 'submenu',
                 key: 'sub1',
-                title: 'Navigation 1',
+                title: 'Mantenimiento',
                 children: [
                     {
                         type: 'itemgroup',
                         key: 'g1',
                         title: 'Item 1',
                         children: [
-                            {type: 'item', key: 1, title: 'Option 1'},
+                            {type: 'item', key: 1, title: 'Usuarios'},
                             {type: 'item', key: 2, title: 'Option 2'}
                         ]
                     },
@@ -86,7 +85,6 @@ class Component extends React.Component<Props, State> {
                 ]
             }
         ];
-
         let leftContent = null;
         let rightContent = null;
         switch (this.props.current) {
@@ -95,7 +93,6 @@ class Component extends React.Component<Props, State> {
                 rightContent = <UserView />
                 break;
         };
-
 
         return (
             <div className={[style.component, style.fadeIn].join(' ')}>
@@ -108,7 +105,10 @@ class Component extends React.Component<Props, State> {
                             </div>
                         </div>
                         <div className={[style.menuContainer].join(' ')}>
-                            <Scrollable>
+                            <Scrollable
+                                autoHeight={true}
+                                hideTracksWhenNotNeeded={true}
+                            >
                                 <div className={[style.menuScroller].join(' ')}>
                                     <Menu
                                         items={items}

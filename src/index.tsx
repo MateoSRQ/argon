@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 
 import store from './redux';
 
-store.subscribe(() => console.log('Look ma, Redux!!'));
+store.subscribe(() => console.log('STORE'));
 
 ReactDOM.render(
     <Provider store={store}>
