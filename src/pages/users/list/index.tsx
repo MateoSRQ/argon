@@ -9,12 +9,14 @@ import {ReduxState} from "../../../redux/reducers";
 import { Input } from 'antd';
 
 import ReactJson from 'react-json-view';
+import {fetchUser} from "../../../redux/actions";
 
 const { Search } = Input;
 let log = ulog('users/list')
 
 interface Props {
     listData: any
+    selectItem: any
 };
 
 interface State {
@@ -30,6 +32,7 @@ class Component extends React.Component<Props, State> {
     handleItemClick(e: string) {
         log.log('Users:list:handleItemClick reached');
         console.log(e);
+        this.props.selectItem(e);
     }
 
     render() {
@@ -71,7 +74,7 @@ const mapStateToProps = (state: ReduxState) => {
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<any>) => {
     return {
-        // selectMenuItem: (data: any) => dispatch(selectMenuItem(data)),
+        selectItem: (data: any) => dispatch(fetchUser(data)),
     };
 }
 

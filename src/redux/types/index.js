@@ -19,3 +19,7 @@ export const SET_USER_MODAL_STATE = 'SET_USER_MODAL_STATE';
 export const SAVE_USER = 'SAVE_USER';
 export const SAVE_USER_SUCCESS = 'SAVE_USER_SUCCESS';
 export const SAVE_USER_FAIL = 'SAVE_USER_FAIL';
+
+export const FETCH_USER = "FETCH_USER";
+export const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
+export const FETCH_USER_FAIL = "FETCH_USER_FAIL";

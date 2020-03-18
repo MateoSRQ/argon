@@ -1,7 +1,12 @@
 import React from 'react';
 import style from './index.module.scss'
 import ulog from 'ulog'
+
 import Modal from '../modal';
+
+
+
+import Scrollable from 'react-custom-scrollbars';
 
 import {connect} from 'react-redux';
 import Redux from "redux";
@@ -41,19 +46,20 @@ class Component extends React.Component<Props, State> {
 
         return (
             <div className={[style.component].join(' ')}>
-
-                <div className={[style.recordContainer].join(' ')}>
-                    <div className={[style.actionContainer].join(' ')}>
-                        <Dropdown
-                            overlay={menu}
-                        >
-                            <Button>
-                                Acciones <DownOutlined />
-                            </Button>
-                        </Dropdown>
-                    </div>
+                <div className={[style.actionContainer].join(' ')}>
+                    <Dropdown
+                        overlay={menu}
+                    >
+                        <Button>
+                            Acciones <DownOutlined />
+                        </Button>
+                    </Dropdown>
                 </div>
+                <Scrollable className={[style.recordScroller].join(' ')}>
+                    <div className={[style.recordContainer].join(' ')}>
 
+                    </div>
+                </Scrollable>
                 <Modal />
             </div>
         )

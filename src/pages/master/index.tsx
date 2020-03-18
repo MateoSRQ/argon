@@ -20,7 +20,8 @@ let log = ulog('master')
 interface Props {
     selectMenuItem: any
     current: string,
-    listStatus: string
+    listStatus: string,
+    viewStatus: string
 };
 interface State {
 
@@ -106,7 +107,7 @@ class Component extends React.Component<Props, State> {
                         </div>
                         <div className={[style.menuContainer].join(' ')}>
                             <Scrollable
-                                autoHeight={true}
+                                // autoHeight={true}
                                 hideTracksWhenNotNeeded={true}
                             >
                                 <div className={[style.menuScroller].join(' ')}>
@@ -131,9 +132,11 @@ class Component extends React.Component<Props, State> {
                 </div>
                 <div className={[style.three].join(' ')}>
                     <div className={[style.container].join(' ')}>
-                        <div className={[style.container].join(' ')}>
-                            {rightContent}
-                        </div>
+                        <Loader status={this.props.viewStatus}>
+                            <div className={[style.container].join(' ')}>
+                                {rightContent}
+                            </div>
+                        </Loader>
                     </div>
                 </div>
             </div>
@@ -144,7 +147,8 @@ class Component extends React.Component<Props, State> {
 const mapStateToProps = (state: ReduxState) => {
     return {
         current: state.appCurrentComponent,
-        listStatus: state.listStatus
+        listStatus: state.listStatus,
+        viewStatus: state.viewStatus
     };
 };
 

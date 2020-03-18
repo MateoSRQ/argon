@@ -68,10 +68,6 @@ export function selectMenuItem(payload: any) {
         }
 
     }
-    // return function action(dispatch: any) {
-    //     return dispatch({type: Type.SELECT_MENU_ITEM, payload});
-    //
-    // }
 }
 export function selectUserActionItem(payload: any) {
     return function action(dispatch: any) {
@@ -101,4 +97,20 @@ export function saveUser(payload: any) {
 
     }
 }
-
+export function fetchUser(payload: any) {
+    return async function action(dispatch: any) {
+        dispatch({type: Type.FETCH_USER, payload: null});
+        console.log('xxxx')
+        console.log(payload);
+        try {
+            const request = await axios({
+                method: 'get',
+                url: serverRoot + userURL + '/' + payload
+            });
+            dispatch({type: Type.FETCH_USER_SUCCESS, payload: {data: request.data}});
+        }
+        catch (e) {
+            dispatch({type: Type.FETCH_USER_FAIL, payload: {error: e}});
+        }
+    }
+}

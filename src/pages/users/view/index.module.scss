@@ -9,10 +9,21 @@
     align-content: center;
     justify-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 
 .component *, .actionMenu * {
+    //font-family: 'Noto Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
+    /* font-family: 'IBM Plex Sans', sans-serif; */
+    /* text-shadow: 0.01px 0 0 currentColor; */
+    font-size: 0.80rem !important;
+    color: black;
+}
+
+.component :global(.ant-dropdown-menu-item) {
     //font-family: 'Noto Sans', sans-serif;
     font-family: 'Roboto', sans-serif;
     /* font-family: 'Rubik', sans-serif; */
@@ -29,9 +40,17 @@
 
 }
 
-.recordContainer {
-    width: 800px;
-    //margin-top: 50px;
-    height: calc(100% - 10px);
+.recordScroller {
+    width: calc(100% - 10px) !important;
+    height: calc(100% - 70px) !important;
+    margin-top: 50px;
     border-radius: 4px;
+    outline: 1px solid red;
+}
+
+.recordContainer {
+    //width: 800px;
+    //margin-top: 50px;
+    width: 10000px;
+    height: 10000px;
 }
