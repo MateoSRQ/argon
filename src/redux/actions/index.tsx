@@ -100,8 +100,6 @@ export function saveUser(payload: any) {
 export function fetchUser(payload: any) {
     return async function action(dispatch: any) {
         dispatch({type: Type.FETCH_USER, payload: null});
-        console.log('xxxx')
-        console.log(payload);
         try {
             const request = await axios({
                 method: 'get',

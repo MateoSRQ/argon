@@ -10,6 +10,7 @@ interface ReduxState {
     listStatus: string
     listUsers: Object[]
     viewStatus: string
+    userViewData: Object[] | null
 }
 const initialState: ReduxState = {
     appCurrentComponent: 'users',
@@ -20,7 +21,8 @@ const initialState: ReduxState = {
     modalUsersState: false,
     listStatus: 'loading',
     listUsers: [],
-    viewStatus: 'loading'
+    viewStatus: 'loading',
+    userViewData: null
 };
 //
 function rootReducer(state = initialState, action: any) {
@@ -108,6 +110,7 @@ function rootReducer(state = initialState, action: any) {
     if (action.type === Types.FETCH_USER_SUCCESS) {
         return Object.assign({}, state, {
             // listSedes: action.payload.data,
+            userViewData: action.payload.data,
             viewStatus: 'loaded'
         });
     }

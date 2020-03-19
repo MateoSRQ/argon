@@ -37,7 +37,27 @@
     position: absolute;
     right: 10px;
     top: 10px;
+}
 
+.titleContainer {
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    width: calc(100% - 140px);
+    height: 29px;
+    /* outline: 1px solid red; */
+    line-height: 30px;
+    vertical-align: middle;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Lato', sans-serif;
+    /* font-family: 'IBM Plex Sans', sans-serif; */
+    /* text-shadow: 0.01px 0 0 currentColor; */
+    font-size: 1.3rem !important;
+    color: #0156a5;
+    text-transform: uppercase;
+    font-weight: 400;
+    /* letter-spacing: .4px; */
+    word-spacing: 2px;
 }
 
 .recordScroller {
@@ -45,7 +65,6 @@
     height: calc(100% - 70px) !important;
     margin-top: 50px;
     border-radius: 4px;
-    outline: 1px solid red;
 }
 
 .recordContainer {

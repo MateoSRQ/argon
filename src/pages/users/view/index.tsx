@@ -16,13 +16,17 @@ import { selectUserActionItem } from "../../../redux/actions";
 import { Button, Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
+import ReactJson from "react-json-view";
+
 let log = ulog('users/view')
 
 interface Props {
-    selectUserActionItem: any
+    selectUserActionItem: any,
+    data: any
 };
 
 interface State {
+
 };
 
 class Component extends React.Component<Props, State> {
@@ -46,6 +50,9 @@ class Component extends React.Component<Props, State> {
 
         return (
             <div className={[style.component].join(' ')}>
+                <div className={[style.titleContainer].join(' ')}>
+                    Nombre de Usuario
+                </div>
                 <div className={[style.actionContainer].join(' ')}>
                     <Dropdown
                         overlay={menu}
@@ -57,7 +64,7 @@ class Component extends React.Component<Props, State> {
                 </div>
                 <Scrollable className={[style.recordScroller].join(' ')}>
                     <div className={[style.recordContainer].join(' ')}>
-
+                        <ReactJson src={this.props.data} />
                     </div>
                 </Scrollable>
                 <Modal />
@@ -68,7 +75,7 @@ class Component extends React.Component<Props, State> {
 
 const mapStateToProps = (state: ReduxState) => {
     return {
-        // current: state.appCurrentComponent,
+        data: state.userViewData
     };
 };
 
