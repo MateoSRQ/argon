@@ -5,7 +5,7 @@
     overflow: hidden;
 }
 
-.component * {
+.component *, .buttonContainer *, :global(.ant-dropdown-menu-item) {
     //font-family: 'Noto Sans', sans-serif;
     font-family: 'Roboto', sans-serif;
     /* font-family: 'Rubik', sans-serif; */
@@ -14,6 +14,7 @@
     font-size: 0.80rem !important;
     color: black;
 }
+
 
 .title {
     width: 100%;
@@ -31,13 +32,25 @@
     font-weight: 500;
 }
 
+.buttonContainer {
+    width: 100%;
+    height: 50px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+}
+
 
 .list {
     width: 100%;
-    height: calc(100% - 97px);
+    height: calc(100% - 147px);
     margin-top: 15px;
     overflow: hidden;
 }
+
 
 
 .scroller {

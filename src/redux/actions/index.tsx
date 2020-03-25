@@ -64,6 +64,18 @@ export function selectMenuItem(payload: any) {
                 }
                 break;
             case '2':
+                console.log('2')
+                dispatch({type: Type.FETCH_SEDES, payload});
+                try {
+                    const request = await axios({
+                        method: 'get',
+                        url: serverRoot + sedesURL
+                    });
+                    dispatch({type: Type.FETCH_SEDES_SUCCESS, payload: {data: request.data}});
+                }
+                catch (e) {
+                    dispatch({type: Type.FETCH_SEDES_FAIL, payload: {error: e}});
+                }
                 break;
         }
 
@@ -110,5 +122,49 @@ export function fetchUser(payload: any) {
         catch (e) {
             dispatch({type: Type.FETCH_USER_FAIL, payload: {error: e}});
         }
+    }
+}
+export function fetchSede(payload: any) {
+    return async function action(dispatch: any) {
+        dispatch({type: Type.FETCH_SEDE, payload: null});
+        try {
+            const request = await axios({
+                method: 'get',
+                url: serverRoot + sedeURL + '/' + payload
+            });
+            dispatch({type: Type.FETCH_SEDE_SUCCESS, payload: {data: request.data}});
+        }
+        catch (e) {
+            dispatch({type: Type.FETCH_SEDE_FAIL, payload: {error: e}});
+        }
+    }
+}
+
+export function selectSedeActionItem(payload: any) {
+    return function action(dispatch: any) {
+        return dispatch({type: Type.SELECT_SEDE_ACTION_ITEM, payload})
+    }
+}
+export function setSedesModalState(payload: any) {
+    return function action(dispatch: any) {
+        return dispatch({type: Type.SET_SEDES_MODAL_STATE, payload})
+    }
+}
+export function saveSede(payload: any) {
+    return async function action(dispatch: any) {
+        dispatch({type: Type.SAVE_SEDE, payload});
+        try {
+            let request = await axios({
+                method: 'post',
+                url: serverRoot + sedeURL,
+                data: payload
+            });
+            dispatch({type: Type.SAVE_SEDE_SUCCESS, payload: {data: request.data}});
+            dispatch(fetchSedes(null));
+        }
+        catch (e) {
+            dispatch({type: Type.SAVE_SEDE_FAIL, payload: {error: e}});
+        }
+
     }
 }

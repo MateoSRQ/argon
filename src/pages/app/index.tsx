@@ -48,16 +48,16 @@ class Component extends React.Component<Props, State> {
         let currentComponent = null;
         switch (this.props.current) {
             case 'users':
-                currentComponent = <Master />
+                currentComponent = <Master current={this.props.current}/>
                 break;
             case 'sedes':
-                currentComponent = <Master />
+                currentComponent = <Master current={this.props.current}/>
                 break;
             case 'login':
                 currentComponent = <Login />
                 break;
             default:
-                currentComponent = <Master />
+                currentComponent = <Master current={this.props.current}/>
                 break;
         };
 

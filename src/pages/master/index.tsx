@@ -10,6 +10,8 @@ import Loader from '../../components/loader';
 
 import UserList from '../users/list';
 import UserView from '../users/view';
+import SedesList from '../sedes/list';
+import SedesView from '../sedes/view';
 
 import Redux from "redux";
 import { validatePassword, selectMenuItem } from "../../redux/actions";
@@ -24,7 +26,6 @@ interface Props {
     viewStatus: string
 };
 interface State {
-
 };
 
 class Component extends React.Component<Props, State> {
@@ -32,6 +33,15 @@ class Component extends React.Component<Props, State> {
         log.log('Master:constructor reached');
         super(props);
     }
+
+    componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
+        log.log('Master:componentDidUpdate reached');
+        if (this.props !== prevProps) {
+
+        }
+    }
+
+
     render() {
         log.log('Master:render reached');
         let items = [
@@ -46,7 +56,7 @@ class Component extends React.Component<Props, State> {
                         title: 'Item 1',
                         children: [
                             {type: 'item', key: 1, title: 'Usuarios'},
-                            {type: 'item', key: 2, title: 'Option 2'}
+                            {type: 'item', key: 2, title: 'Sedes'}
                         ]
                     },
                     {
@@ -92,6 +102,10 @@ class Component extends React.Component<Props, State> {
             case 'users':
                 leftContent = <UserList />
                 rightContent = <UserView />
+                break;
+            case 'sedes':
+                leftContent = <SedesList />
+                rightContent = <SedesView />
                 break;
         };
 
@@ -146,7 +160,6 @@ class Component extends React.Component<Props, State> {
 
 const mapStateToProps = (state: ReduxState) => {
     return {
-        current: state.appCurrentComponent,
         listStatus: state.listStatus,
         viewStatus: state.viewStatus
     };

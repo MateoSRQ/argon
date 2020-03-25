@@ -1,10 +1,11 @@
 import React from 'react';
 import style from './index.module.scss'
 import ulog from 'ulog'
+import _ from 'lodash';
 
 import Modal from '../modal';
-
-
+import Slider from './slider';
+import Nodes from './nodes';
 
 import Scrollable from 'react-custom-scrollbars';
 
@@ -33,41 +34,36 @@ class Component extends React.Component<Props, State> {
     constructor(props: Props) {
         log.log('Users:view:constructor reached');
         super(props);
+
     }
+
 
     render() {
         log.log('Users:view:render reached');
+        console.log('DATA')
+        let json = null;
+        let nodes = null;
+        if (this.props.data) {
+            json  = <ReactJson src={this.props.data} collapsed={true}/>
+            nodes = <Nodes data={this.props.data.nodos}/>
+        }
 
-
-
-        let menu = (
-            <Menu
-                onClick={this.props.selectUserActionItem}
-                className={[style.actionMenu].join(' ')}
-            >
-                <Menu.Item key="1">Nuevo usuario</Menu.Item>
-                <Menu.Item key="2">2nd item</Menu.Item>
-                <Menu.Item key="3">3rd item</Menu.Item>
-            </Menu>
-        );
 
         return (
             <div className={[style.component].join(' ')}>
                 <div className={[style.titleContainer].join(' ')}>
                     {this.props.data?.nombre}
                 </div>
-                <div className={[style.actionContainer].join(' ')}>
-                    <Dropdown
-                        overlay={menu}
-                    >
-                        <Button>
-                            Acciones <DownOutlined />
-                        </Button>
-                    </Dropdown>
+                <div className={[style.subtitleContainer].join(' ')}>
+                    {this.props.data?.descripcion}
                 </div>
+
                 <Scrollable className={[style.recordScroller].join(' ')}>
                     <div className={[style.recordContainer].join(' ')}>
-                        {/*<ReactJson src={this.props.data} />*/}
+                        <Slider style={{height: '250px'}}>
+                            {json}
+                        </Slider>
+                        {nodes}
                     </div>
                 </Scrollable>
                 <Modal />
@@ -84,8 +80,8 @@ const mapStateToProps = (state: ReduxState) => {
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<any>) => {
     return {
-         selectUserActionItem: (data: any) => dispatch(selectUserActionItem(data)),
-    };
+
+    }
 }
 
 const ConnectedComponent = connect(
