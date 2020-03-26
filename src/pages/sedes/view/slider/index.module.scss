@@ -1,7 +1,7 @@
 .component {
     width: 100%;
-    height: 200px;
-    background: #d5d5d5;
+    height: 300px;
+    background: #becbee;
     overflow: hidden;
     display:flex;
     flex-direction: column;
@@ -10,4 +10,16 @@
     justify-items: center;
     justify-content: center;
     overflow: hidden;
+}
+
+.component > .slide {
+    width: 100%;
+    outline: 1px solid red;
+}
+
+.component :global(.ant-carousel) :global(.slick-slide) {
+    height: 100%;
+    width: 100%;
+
+
 }

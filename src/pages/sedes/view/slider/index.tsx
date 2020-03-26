@@ -2,12 +2,7 @@ import React from 'react';
 import style from './index.module.scss'
 import ulog from 'ulog'
 
-
-import {connect} from 'react-redux';
-import Redux from "redux";
-
-import { Button, Menu, Dropdown } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { Carousel, Radio } from 'antd';
 
 import ReactJson from "react-json-view";
 
@@ -29,11 +24,11 @@ class Component extends React.Component<Props, State> {
 
     render() {
         log.log('Users:view:render reached');
-        let {...props} = this.props;
+        let {children, ...props} = this.props;
         return (
-            <div className={[style.component].join(' ')} {...props}>
-                {this.props.children}
-            </div>
+            <Carousel className={[style.component].join(' ')} {...props}>
+                {children}
+            </Carousel>
         )
     }
 }

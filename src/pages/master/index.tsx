@@ -115,9 +115,14 @@ class Component extends React.Component<Props, State> {
                 <div className={[style.one].join(' ')}>
                     <div className={[style.container].join(' ')}>
                         <div className={[style.id].join(' ')}>
-                            <div className={[style.container].join(' ')}>
-                                ID
+                            <div className={[style.idContainer].join(' ')}>
+                                <img className={[style.logo].join(' ')} src="./images/logo.png" />
+                                <img className={[style.avatar].join(' ')} src="./images/avatar.fw.png" />
+                                <div className={[style.name].join(' ')}>Roger Federer</div>
+                                <div className={[style.title].join(' ')}>Administrador</div>
                             </div>
+
+
                         </div>
                         <div className={[style.menuContainer].join(' ')}>
                             <Scrollable
