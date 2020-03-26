@@ -57,6 +57,23 @@
     word-spacing: 2px;
 }
 
+.component :global(.ant-collapse-header) {
+    /* outline: 1px solid red; */
+    line-height: 30px;
+    vertical-align: middle;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Lato', sans-serif;
+    /* font-family: 'IBM Plex Sans', sans-serif; */
+    /* text-shadow: 0.01px 0 0 currentColor; */
+    font-size: 1rem !important;
+    color: #0156a5 !important;
+    text-transform: uppercase;
+    font-weight: 400;
+    /* letter-spacing: .4px; */
+    word-spacing: 2px;
+    text-align: right;
+}
+
 .subtitleContainer {
     width: calc(100% - 20px);
     margin-left: 15px;
