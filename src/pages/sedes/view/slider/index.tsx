@@ -29,37 +29,46 @@ interface State {
 
 const data = [
     {
-        name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
+        name: 'VISUAL', Atendidos: 25, "En cola": 56, Abandono:21,
     },
     {
-        name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
+        name: 'RECEPCIÓN', Atendidos: 231, "En cola": 312, Abandono: 0,
     },
     {
-        name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
+        name: 'EKG', Atendidos: 32, "En cola": 323, Abandono: 21,
     },
     {
-        name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
+        name: 'CONSULTORIO', Atendidos: 23, "En cola": 322, Abandono: 15,
     },
     {
-        name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
+        name: 'PSICOLOGIA', Atendidos: 34, "En cola": 57, Abandono: 21,
     },
     {
-        name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
+        name: 'CAJA', Atendidos: 65, "En cola": 123, Abandono: 12,
     },
     {
-        name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
+        name: 'RESULTADOS', Atendidos: 94, "En cola": 54, Abandono: 32,
     },
     {
-        name: 'Page H', uv: 2780, pv: 3908, amt: 2000,
+        name: 'LABORATORIO', Atendidos: 43, "En cola": 63, Abandono: 2,
     },
     {
-        name: 'Page I', uv: 1890, pv: 4800, amt: 2181,
+        name: 'AUDIOMETRIA', Atendidos: 63, "En cola": 45, Abandono: 3,
     },
     {
-        name: 'Page J', uv: 2390, pv: 3800, amt: 2500,
+        name: 'RADIOLOGIA', Atendidos: 56, "En cola": 76, Abandono: 3,
     },
     {
-        name: 'Page K', uv: 3490, pv: 4300, amt: 2100,
+        name: 'ODONTOLOGIA', Atendidos: 36, "En cola": 32, Abandono: 3,
+    },
+    {
+        name: 'SALA MULTIPLE', Atendidos: 77, "En cola": 76, Abandono: 4,
+    },
+    {
+        name: 'TELEMEDICINA', Atendidos: 67, "En cola": 56, Abandono: 5,
+    },
+    {
+        name: 'CARDIOLOGIA', Atendidos: 73, "En cola": 31, Abandono: 1,
     },
 ];
 
@@ -67,6 +76,8 @@ class Component extends React.Component<Props, State> {
     constructor(props: Props) {
         log.log('Sedes:nodes:constructor reached');
         super(props);
+        console.log('COMPONENT')
+        console.log(props);
     }
 
     render() {
@@ -79,6 +90,7 @@ class Component extends React.Component<Props, State> {
             console.log(x)
 
 
+
         });
         let {...props} = this.props;
         return (
@@ -87,7 +99,7 @@ class Component extends React.Component<Props, State> {
                     <TabPane tab={"Global"} key={"1"}>
                         <div className={[style.slide].join(' ')}>
                             <BarChart
-                                width={1000}
+                                width={2000}
                                 height={300}
                                 data={data}
                                 margin={{
@@ -99,8 +111,9 @@ class Component extends React.Component<Props, State> {
                                 <YAxis />
                                 <Tooltip />
                                 <Legend />
-                                <Bar dataKey="pv" fill="#8884d8" />
-                                <Bar dataKey="uv" fill="#82ca9d" />
+                                <Bar dataKey="Atendidos" fill="#8884d8" />
+                                <Bar dataKey="En cola" fill="#82ca9d" />
+                                <Bar dataKey="Abandono" fill="#67a9cf" />
                             </BarChart>
                         </div>
                     </TabPane>

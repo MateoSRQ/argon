@@ -6,6 +6,8 @@ import ulog from 'ulog'
 import {connect} from 'react-redux';
 import Redux from "redux";
 
+import faker from 'faker';
+
 import { Tabs, Radio } from 'antd';
 import { Table, Tag } from 'antd';
 
@@ -85,49 +87,22 @@ const columns = [
     }
 ]
 
+
+
 const data = [
-    {
-        name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
-    },
-    {
-        name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
-    },
-    {
-        name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
-    },
-    {
-        name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
-    },
-    {
-        name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
-    },
-    {
-        name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
-    },
-    {
-        name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
-    },
-    {
-        name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
-    },
-    {
-        name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
-    },
-    {
-        name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
-    },
-    {
-        name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
-    },
-    {
-        name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
-    },
-    {
-        name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
-    },
-    {
-        name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
-    },
+    { name: '08:00', 'Atendidos': 0, 'En cola': 63, 'Abandonados': 0 },
+    { name: '08:30', 'Atendidos': 5, 'En cola': 58, 'Abandonados': 2 },
+    { name: '09:00', 'Atendidos': 7, 'En cola': 51, 'Abandonados': 2 },
+    { name: '09:30', 'Atendidos': 7, 'En cola': 48, 'Abandonados': 3 },
+    { name: '10:00', 'Atendidos': 9, 'En cola': 41, 'Abandonados': 3 },
+    { name: '10:30', 'Atendidos': 5, 'En cola': 32, 'Abandonados': 3 },
+    { name: '11:00', 'Atendidos': 8, 'En cola': 26, 'Abandonados': 4 },
+    { name: '11:30', 'Atendidos': 10, 'En cola': 14, 'Abandonados': 5 },
+    { name: '12:00', 'Atendidos': 8, 'En cola': 9, 'Abandonados': 7 },
+    { name: '12:30', 'Atendidos': 5, 'En cola': 7, 'Abandonados': 9 },
+    { name: '13:00', 'Atendidos': 8, 'En cola': 2, 'Abandonados': 10 },
+    { name: '13:30', 'Atendidos': 4, 'En cola': 1, 'Abandonados': 12 },
+    { name: '14:00', 'Atendidos': 3, 'En cola': 0, 'Abandonados': 14 },
 ];
 
 class Component extends React.Component<Props, State> {
@@ -144,8 +119,12 @@ class Component extends React.Component<Props, State> {
             console.log(key);
             let x  = _.groupBy(this.props.data[key], (item: any) => { return item.estado } )
             console.log(x)
+            let title = key + ' : ' +
+                faker.random.number({min: 10, max: 30}) + 'A / ' +
+                faker.random.number({min: 20, max: 50}) + 'E / ' +
+                faker.random.number({min: 5, max: 15})  + 'X'
             tabs.push(
-                <TabPane tab={key} key={key}>
+                <TabPane tab={title} key={key}>
                     <div style={{ overflowX: 'scroll', overflowY: 'hidden'}}>
                         <LineChart
                             width={1000}
@@ -158,8 +137,9 @@ class Component extends React.Component<Props, State> {
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="name" />
                                <Tooltip />
-                            <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-                            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                            <Line type="monotone" dataKey="Atendidos" stroke="#8884d8" activeDot={{ r: 8 }} />
+                            {/*<Line type="monotone" dataKey="En cola" stroke="#82ca9d" />*/}
+                            <Line type="monotone" dataKey="Abandonados" stroke="#91cf60" />
                         </LineChart>
                     </div>
                     <div className={[style.subtitle].join(' ')}>
